@@ -27,7 +27,7 @@ const authController = {
 			await newUser.save();
 
 			// Guardar la sesión si es necesario
-			// req.session.usernamed = newUser.username;
+			req.session.usernamed = newUser.username;
 
 			// Respuesta JSON en lugar de redirigir
 			res.status(201).json({
