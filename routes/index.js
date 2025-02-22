@@ -4,6 +4,7 @@ const OrderRoutes = require('./orders');
 const uploadRoutes = require('./upload');
 const UserRoutes = require('./user');
 const invoiceRoutes = require('./invoice');
+const AuthRoutes = require('./auth');
 
 // Ruta principal (en lugar de renderizar login.hbs, devolvemos un mensaje)
 router.get('/', (req, res) => {
@@ -31,5 +32,7 @@ router.use('/upload', uploadRoutes);
 router.use('/orders', OrderRoutes);
 router.use('/user', UserRoutes);
 router.use('/invoice', invoiceRoutes);
+router.use('/login', AuthRoutes);
+router.use('/register', AuthRoutes);
 
 module.exports = router;
