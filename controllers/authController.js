@@ -74,6 +74,7 @@ const authController = {
 
 			// Enviar respuesta JSON en lugar de redirigir
 			res.status(200).json({
+				success: true,
 				message: 'Login exitoso',
 				token,
 				user: {
