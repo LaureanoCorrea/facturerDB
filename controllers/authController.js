@@ -27,7 +27,7 @@ const authController = {
 			await newUser.save();
 
 			// Guardar la sesión si es necesario
-			req.session.usernamed = newUser.username;
+			// req.session.usernamed = newUser.username;
 
 			// Respuesta JSON en lugar de redirigir
 			res.status(201).json({
@@ -40,8 +40,12 @@ const authController = {
 				},
 			});
 		} catch (error) {
-			console.error(error);
-			res.status(500).json({ error: 'Error al registrar el usuario' });
+			console.error('Error en registro:', error.message, error.stack);
+			return res.status(500).json({
+				success: false,
+				error: 'Error al registrar el usuario',
+				details: error.message,
+			});
 		}
 	},
 
