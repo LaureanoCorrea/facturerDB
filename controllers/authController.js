@@ -31,6 +31,7 @@ const authController = {
 
 			// Respuesta JSON en lugar de redirigir
 			res.status(201).json({
+				success: true,
 				message: 'Usuario registrado exitosamente',
 				user: {
 					id: newUser._id,
