@@ -3,9 +3,13 @@ const User = require('../models/user.model');
 
 const authMiddleware = {
 	isAuthenticated: (req, res, next) => {
-		const token = req.cookies.authToken;
+		// Busca el token en cookies o en el header "Authorization"
+		const token =
+			req.cookies?.authToken ||
+			(req.headers.authorization && req.headers.authorization.split(' ')[1]);
+
 		if (token) {
-			jwt.verify(token, 'your_secret_key', async (err, decoded) => {
+			jwt.verify(token, process.env.JWT_SECRET, async (err, decoded) => {
 				if (err) {
 					return res.status(403).json({ message: 'Token inválido o expirado' });
 				}
