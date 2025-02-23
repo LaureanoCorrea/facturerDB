@@ -18,7 +18,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // Montar las rutas
 app.use('/api', authRoutes);
-app.use('/', mainRoutes); // Agrega esta línea
+app.use('/api', mainRoutes); // Agrega esta línea
 
 // Iniciar el servidor
 app.listen(PORT, () => {
